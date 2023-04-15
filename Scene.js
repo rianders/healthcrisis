@@ -35,7 +35,11 @@ class Scene {
         this.backgroundObjects = [];
       }
       
-  
+    load() {
+        // Load any necessary assets for the scene, such as images or sounds
+        this.bgImg = loadImage('assets/school_background.png');
+        //this.sound = loadSound('assets/to/sound.wav');
+      }
     // Update the state of the scene and its game objects
     update() {
       for (const obj of this.gameObjects) {

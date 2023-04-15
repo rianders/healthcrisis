@@ -1,41 +1,46 @@
 class IntroScene extends Scene {
     constructor() {
       super("IntroScene");
-  
-      // Create the title and description objects
-      const title = new Title("School Health Crisis", width / 2, height / 4);
-      const description = new Description(
-        "Welcome to School Health Crisis! As the health representative for the school, it's up to you to manage an outbreak of a mysterious disease. Your decisions will determine the fate of the students and the school. Are you up for the challenge?",
-        width / 2,
-        height / 2,
-        width / 2.5
-      );
-  
-      // Create the start button and define its action
-      const startButton = new Button(
+      this.startButton = new Button(
         "Start",
         width / 2,
         (3 * height) / 4,
-        150,
-        50,
+        200,
+        75,
         () => {
-          // Change the scene when the start button is clicked
+          // Load the decision scene when the start button is clicked
           sceneManager.loadScene("DecisionScene");
         }
       );
   
-      // Add the game objects to the scene
-      this.addGameObject(title);
-      this.addGameObject(description);
-      this.addGameObject(startButton);
+      this.title = new Title(
+        "School Health Crisis",
+        width / 2,
+        height / 4 - 50
+      );
+  
+      this.subtitle = new Description(
+        "You are the health representative for a school facing an outbreak of a mysterious disease. Your choices will determine the fate of the school and its students.",
+        width / 2,
+        height / 2 - 50
+      );
+  
+      //this.background = new BackgroundObject(bgImg);
     }
   
-    draw() {
-      // Call the parent draw() function
-      super.draw();
+    setup() {
+      // Set up the canvas and other elements in the scene
+      this.startButton.setPosition(width / 2, (3 * height) / 4);
+      this.title.setPosition(width / 2, height / 4 - 50);
+      this.subtitle.setPosition(width / 2, height / 2 - 50);
+      this.background.setSize(width, height);
+      this.background.setPosition(0, 0);
   
-      // Set the background color
-      background(255, 245, 231);
+      // Add the game objects to the scene
+      this.addBackground(this.background);
+      this.addGameObject(this.startButton);
+      this.addGameObject(this.title);
+      this.addGameObject(this.subtitle);
     }
   }
   
